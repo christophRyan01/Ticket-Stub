@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Switch, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Button, Switch, View, Image } from 'react-native';
 import HomeScreen from "./app/screens/HomeScreen"
 import ViewTicketsSreen from './app/screens/ViewTicketsSreen';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker'
+import * as Permissions from 'expo-permissions';
 
 import AppText from './app/components/AppText'
 import AppButton from './app/components/AppButton';
@@ -18,13 +20,14 @@ import AppTextInput from './app/components/AppTextInput';
 import LoginScreens from './app/screens/LoginScreens';
 import ListingEditScreen from './app/screens/ListingEditScreen';
 import ListItem from './app/components/ListItem'
+import ImageInput from './app/components/ImageInput';
+import ImageInputList from './app/components/ImageInputList'
 
 
 
 export default function App() {
 
-  return (
-    <ListingEditScreen />
-  )
+  return <ListingEditScreen />
+
 
 }

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         color: colors.medium,
     },
     title: {
-        fontSize: 22,
+        fontWeight: "500",
     },
 
 })

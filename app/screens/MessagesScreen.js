@@ -32,11 +32,11 @@ function MessagesScreen(props) {
         <Screen>
             <FlatList
                 data={messages}
-                keyExtractor={messages => messages.id.toString()}
+                keyExtractor={(message) => message.id.toString()}
                 renderItem={({ item }) => (
                     <ListItem
                         title={item.title}
-                        subtitle={item.subtitle}
+                        subtitle={item.description}
                         image={item.image}
                         // onPress={() => console.log("Message selected", item)}
                         renderRightActions={() =>
