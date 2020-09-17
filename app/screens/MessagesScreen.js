@@ -1,33 +1,38 @@
-import React, { useState } from 'react'
-import { FlatList, StyleSheet, View } from 'react-native';
+import React, { useState } from "react";
+import { FlatList, StyleSheet, View } from "react-native";
 
-import Screen from '../components/Screen'
-import ListItem from '../components/ListItem'
-import ListItemSeparator from '../components/ListItemSeparator';
-import ListItemDeleteAction from '../components/ListItemDeleteAction';
+import Screen from "../components/Screen";
+import {
+    ListItem,
+    ListItemDeleteAction,
+    ListItemSeparator,
+} from "../components/lists";
 
 const initialMessages = [
     {
         id: 1,
-        title: "Red Hot Tickets",
-        description: "Red Tickets",
-        image: require('../assets/userImage.jpeg')
+        title: "Christopher G",
+        description: "Hey! Is this item still available?",
+        image: require("../assets/userImage.jpeg"),
     },
     {
         id: 2,
-        title: "T2",
-        description: "D2",
-        image: require('../assets/userImage.jpeg')
-    }
-]
+        title: "Christopher G",
+        description:
+            "I'm interested in this item. When will you be able to post it?",
+        image: require("../assets/userImage.jpeg"),
+    },
+];
 
 function MessagesScreen(props) {
     const [messages, setMessages] = useState(initialMessages);
     const [refreshing, setRefreshing] = useState(false);
 
     const handleDelete = (message) => {
+        // Delete the message from messages
         setMessages(messages.filter((m) => m.id !== message.id));
-    }
+    };
+
     return (
         <Screen>
             <FlatList
@@ -36,11 +41,12 @@ function MessagesScreen(props) {
                 renderItem={({ item }) => (
                     <ListItem
                         title={item.title}
-                        subtitle={item.description}
+                        subTitle={item.description}
                         image={item.image}
-                        // onPress={() => console.log("Message selected", item)}
-                        renderRightActions={() =>
-                            <ListItemDeleteAction onPress={() => handleDelete(item)} />}
+                        onPress={() => console.log("Message selected", item)}
+                        renderRightActions={() => (
+                            <ListItemDeleteAction onPress={() => handleDelete(item)} />
+                        )}
                     />
                 )}
                 ItemSeparatorComponent={ListItemSeparator}
@@ -51,13 +57,15 @@ function MessagesScreen(props) {
                             id: 2,
                             title: "T2",
                             description: "D2",
-                            image: require('../assets/userImage.jpeg')
-                        }
-                    ])
+                            image: require("../assets/userImage.jpeg"),
+                        },
+                    ]);
                 }}
             />
         </Screen>
     );
 }
 
-export default MessagesScreen
+const styles = StyleSheet.create({});
+
+export default MessagesScreen;

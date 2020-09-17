@@ -30,9 +30,9 @@ function AccountScreen({ navigation }) {
         <Screen style={styles.screen}>
             <View style={styles.container}>
                 <ListItem
-                    title="Christopher Gotschall"
-                    subTitle="christophergotschall@gmail.com"
-                    image={require("../assets/userImage.jpeg")}
+                    title="Mosh Hamedani"
+                    subTitle="programmingwithmosh@gmail.com"
+                    image={require("../assets/mosh.jpg")}
                 />
             </View>
             <View style={styles.container}>
@@ -64,7 +64,7 @@ function AccountScreen({ navigation }) {
 
 const styles = StyleSheet.create({
     screen: {
-        backgroundColor: colors.medium,
+        backgroundColor: colors.light,
     },
     container: {
         marginVertical: 20,

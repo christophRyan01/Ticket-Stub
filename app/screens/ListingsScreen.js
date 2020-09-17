@@ -1,45 +1,53 @@
-import React from 'react'
-import { FlatList, StyleSheet } from 'react-native'
+import React, { useEffect } from "react";
+import { FlatList, StyleSheet } from "react-native";
 
-import Card from '../components/Card'
-import Screen from '../components/Screen'
-import colors from '../config/colors'
+import ActivityIndicator from "../components/ActivityIndicator";
+import Button from "../components/Button";
+import Card from "../components/Card";
+import colors from "../config/colors";
+import listingsApi from "../api/listings";
+import routes from "../navigation/routes";
+import Screen from "../components/Screen";
+import AppText from "../components/Text";
+import useApi from "../hooks/useApi";
 
-const listings = [
-    {
-        id: 1,
-        title: 'blue tickets',
-        price: 100,
-        image: require('../assets/bluetickets.jpeg')
-    },
-    {
-        id: 2,
-        title: 'blue tickets front row',
-        price: 1000,
-        image: require('../assets/bluetickets.jpeg')
-    }
-];
+function ListingsScreen({ navigation }) {
+    const getListingsApi = useApi(listingsApi.getListings);
 
-export default function ListingsScreen(props) {
+    useEffect(() => {
+        getListingsApi.request();
+    }, []);
+
     return (
         <Screen style={styles.screen}>
+            {getListingsApi.error && (
+                <>
+                    <AppText>Couldn't retrieve the listings.</AppText>
+                    <Button title="Retry" onPress={getListingsApi.request} />
+                </>
+            )}
+            <ActivityIndicator visible={getListingsApi.loading} />
             <FlatList
-                data={listings}
-                keyExtractor={listing => listing.id.toString()}
-                renderItem={({ item }) =>
+                data={getListingsApi.data}
+                keyExtractor={(listing) => listing.id.toString()}
+                renderItem={({ item }) => (
                     <Card
                         title={item.title}
                         subTitle={"$" + item.price}
-                        image={item.image} />
-                }
+                        imageUrl={item.images[0].url}
+                        onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
+                    />
+                )}
             />
         </Screen>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     screen: {
         padding: 20,
-        backgroundColor: colors.red
-    }
-})
+        backgroundColor: colors.medium,
+    },
+});
+
+export default ListingsScreen;
