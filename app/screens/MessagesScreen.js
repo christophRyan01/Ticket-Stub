@@ -10,22 +10,6 @@ import {
 import useApi from '../hooks/useApi'
 import messagesApi from '../api/messages'
 
-// const initialMessages = [
-//     {
-//         id: 1,
-//         title: "Christopher G",
-//         description: "Hey! Is this item still available?",
-//         image: require("../assets/userImage.jpeg"),
-//     },
-//     {
-//         id: 2,
-//         title: "Christopher G",
-//         description:
-//             "I'm interested in this item. When will you be able to post it?",
-//         image: require("../assets/userImage.jpeg"),
-//     },
-// ];
-
 function MessagesScreen(props) {
     const getMessagesApi = useApi(messagesApi.getMessages)
 
@@ -33,7 +17,7 @@ function MessagesScreen(props) {
         getMessagesApi.request();
     }, []);
 
-    // const [messages, setMessages] = useState();
+    const [messages, setMessages] = useState(getMessagesApi);
     const [refreshing, setRefreshing] = useState(false);
 
     const handleDelete = (message) => {
@@ -62,8 +46,8 @@ function MessagesScreen(props) {
                     setMessages([
                         {
                             id: 2,
-                            title: "T2",
-                            description: "D2",
+                            title: "Christopher G",
+                            description: "Hello are these still available",
                             image: require("../assets/userImage.jpeg"),
                         },
                     ]);

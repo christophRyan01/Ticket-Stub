@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./app/assets/ticket-icon.jpg",
     "splash": {
-      "image": "./app/assets/ticketpile.png",
+      "image": "./app/assets/clip-art.png",
       "resizeMode": "cover",
       "backgroundColor": "#000"
     },
@@ -21,6 +21,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Sell Your Tickets"
   }
 }

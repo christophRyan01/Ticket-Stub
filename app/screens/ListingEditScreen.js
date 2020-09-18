@@ -46,11 +46,10 @@ function ListingEditScreen() {
             (progress) => setProgress(progress)
         );
 
-        if (!result.ok) {
-            setUploadVisible(false);
-            return alert("Could not save the listing");
-        }
-
+        // if (!result.ok) {
+        //     setUploadVisible(false);
+        //     return alert("Could not save the listing");
+        // }
         resetForm();
     };
 
