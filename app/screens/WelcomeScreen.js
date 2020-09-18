@@ -1,74 +1,63 @@
 import React from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import { ImageBackground, StyleSheet, View, Image, Text } from "react-native";
 
-import { ListItem, ListItemSeparator } from "../components/lists";
-import colors from "../config/colors";
-import Icon from "../components/Icon";
+import Button from "../components/Button";
 import routes from "../navigation/routes";
-import Screen from "../components/Screen";
 
-const menuItems = [
-    {
-        title: "My Listings",
-        icon: {
-            name: "format-list-bulleted",
-            backgroundColor: colors.primary,
-        },
-    },
-    {
-        title: "My Messages",
-        icon: {
-            name: "email",
-            backgroundColor: colors.secondary,
-        },
-        targetScreen: routes.MESSAGES,
-    },
-];
-
-function AccountScreen({ navigation }) {
+function WelcomeScreen({ navigation }) {
     return (
-        <Screen style={styles.screen}>
-            <View style={styles.container}>
-                <ListItem
-                    title="Mosh Hamedani"
-                    subTitle="programmingwithmosh@gmail.com"
-                    image={require("../assets/mosh.jpg")}
+        <ImageBackground
+            blurRadius={2}
+            style={styles.background}
+            source={require("../assets/ticketpile.png")}
+        >
+            <View style={styles.logoContainer}>
+                <Image style={styles.logo} source={require("../assets/littleredTicket.png")} />
+                <Text style={styles.tagline}>Ticket Stubs</Text>
+            </View>
+            <View style={styles.buttonsContainer}>
+                <Button
+                    title="Login"
+                    onPress={() => navigation.navigate(routes.LOGIN)}
+                />
+                <Button
+                    title="Register"
+                    color="secondary"
+                    onPress={() => navigation.navigate(routes.REGISTER)}
                 />
             </View>
-            <View style={styles.container}>
-                <FlatList
-                    data={menuItems}
-                    keyExtractor={(menuItem) => menuItem.title}
-                    ItemSeparatorComponent={ListItemSeparator}
-                    renderItem={({ item }) => (
-                        <ListItem
-                            title={item.title}
-                            IconComponent={
-                                <Icon
-                                    name={item.icon.name}
-                                    backgroundColor={item.icon.backgroundColor}
-                                />
-                            }
-                            onPress={() => navigation.navigate(item.targetScreen)}
-                        />
-                    )}
-                />
-            </View>
-            <ListItem
-                title="Log Out"
-                IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
-            />
-        </Screen>
+        </ImageBackground>
     );
 }
 
+
 const styles = StyleSheet.create({
-    screen: {
-        backgroundColor: colors.light,
+    background: {
+        flex: 1,
+        justifyContent: "flex-end",
+        alignItems: "center",
     },
-    container: {
-        marginVertical: 20,
+    buttonsContainer: {
+        padding: 20,
+        width: "100%",
+    },
+    logo: {
+        width: 200,
+        height: 100,
+        borderRadius: 20,
+    },
+    logoContainer: {
+        position: "absolute",
+        top: 70,
+        alignItems: "center",
+    },
+    tagline: {
+        fontSize: 45,
+        color: "white",
+        fontWeight: "600",
+        paddingVertical: 20,
+        fontFamily: "Arial",
     },
 });
 
-export default AccountScreen;
+export default WelcomeScreen;

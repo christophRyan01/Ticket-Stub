@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 
 import Screen from "../components/Screen";
@@ -7,36 +7,43 @@ import {
     ListItemDeleteAction,
     ListItemSeparator,
 } from "../components/lists";
+import useApi from '../hooks/useApi'
+import messagesApi from '../api/messages'
 
-const initialMessages = [
-    {
-        id: 1,
-        title: "Christopher G",
-        description: "Hey! Is this item still available?",
-        image: require("../assets/userImage.jpeg"),
-    },
-    {
-        id: 2,
-        title: "Christopher G",
-        description:
-            "I'm interested in this item. When will you be able to post it?",
-        image: require("../assets/userImage.jpeg"),
-    },
-];
+// const initialMessages = [
+//     {
+//         id: 1,
+//         title: "Christopher G",
+//         description: "Hey! Is this item still available?",
+//         image: require("../assets/userImage.jpeg"),
+//     },
+//     {
+//         id: 2,
+//         title: "Christopher G",
+//         description:
+//             "I'm interested in this item. When will you be able to post it?",
+//         image: require("../assets/userImage.jpeg"),
+//     },
+// ];
 
 function MessagesScreen(props) {
-    const [messages, setMessages] = useState(initialMessages);
+    const getMessagesApi = useApi(messagesApi.getMessages)
+
+    useEffect(() => {
+        getMessagesApi.request();
+    }, []);
+
+    // const [messages, setMessages] = useState();
     const [refreshing, setRefreshing] = useState(false);
 
     const handleDelete = (message) => {
-        // Delete the message from messages
         setMessages(messages.filter((m) => m.id !== message.id));
     };
 
     return (
         <Screen>
             <FlatList
-                data={messages}
+                data={getMessagesApi.data}
                 keyExtractor={(message) => message.id.toString()}
                 renderItem={({ item }) => (
                     <ListItem

@@ -48,7 +48,7 @@ function ListingEditScreen() {
 
         if (!result.ok) {
             setUploadVisible(false);
-            return alert("Could not save the ticket");
+            return alert("Could not save the listing");
         }
 
         resetForm();
