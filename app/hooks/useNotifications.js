@@ -4,11 +4,13 @@ import * as Permissions from 'expo-permissions';
 
 import getExpoPushTokenApi from "../api/expoPushTokens"
 
-export default useNotifications = (notificationListener) => {
+export default useNotifications = () => {
     useEffect(() => {
         registerForPushNotifications();
 
-        if (notificationListener) Notifications.addListener(notificationListener);
+        Notifications.addListener((notification) => {
+            notification.navigate("Account");
+        });
     }, []);
 
     const registerForPushNotifications = async () => {

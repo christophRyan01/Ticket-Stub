@@ -17,7 +17,7 @@ function MessagesScreen(props) {
         getMessagesApi.request();
     }, []);
 
-    const [messages, setMessages] = useState(getMessagesApi);
+    const [messages, setMessages] = useState(getMessagesApi.data);
     const [refreshing, setRefreshing] = useState(false);
 
     const handleDelete = (message) => {
@@ -28,6 +28,7 @@ function MessagesScreen(props) {
         <Screen>
             <FlatList
                 data={getMessagesApi.data}
+                extraData={getMessagesApi.data}
                 keyExtractor={(message) => message.id.toString()}
                 renderItem={({ item }) => (
                     <ListItem
@@ -43,14 +44,7 @@ function MessagesScreen(props) {
                 ItemSeparatorComponent={ListItemSeparator}
                 refreshing={refreshing}
                 onRefresh={() => {
-                    setMessages([
-                        {
-                            id: 2,
-                            title: "Christopher G",
-                            description: "Hello are these still available",
-                            image: require("../assets/userImage.jpeg"),
-                        },
-                    ]);
+                    setMessages();
                 }}
             />
         </Screen>
