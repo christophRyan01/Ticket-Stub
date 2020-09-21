@@ -10,7 +10,7 @@ function ActivityIndicator({ visible = false }) {
             <LottieView
                 autoPlay
                 loop
-                source={require("../assets/animations/loader.json")}
+                source={require("../assets/animations/ball.json")}
             />
         </View>
     );
@@ -19,7 +19,7 @@ function ActivityIndicator({ visible = false }) {
 const styles = StyleSheet.create({
     overlay: {
         position: "absolute",
-        backgroundColor: "white",
+        // backgroundColor: "white",
         height: "100%",
         opacity: 0.8,
         width: "100%",
