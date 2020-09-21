@@ -40,13 +40,6 @@ const AppNavigator = () => {
                             onPress={() => navigation.navigate(routes.LISTING_EDIT)}
                         />
                     ),
-                    tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons
-                            name="plus-circle"
-                            color={color}
-                            size={size}
-                        />
-                    ),
                 })}
             />
             <Tab.Screen

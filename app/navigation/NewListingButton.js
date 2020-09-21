@@ -23,12 +23,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: "#4ca3dd",
         borderColor: colors.medium,
-        borderRadius: 20,
-        borderWidth: 5,
+        borderRadius: 15,
+        borderWidth: 3,
         bottom: 20,
         height: 60,
         justifyContent: "center",
-        width: 150,
+        width: 170,
     },
 });
 

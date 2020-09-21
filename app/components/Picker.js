@@ -46,7 +46,7 @@ export default function AppTextInput({
             </TouchableWithoutFeedback>
             <Modal visible={modalVisible} animationType="slide">
                 <Screen>
-                    <Button title="Close" onPress={() => setModalVisible(false)} />
+                    <Button title="(CLOSE)" onPress={() => setModalVisible(false)} />
                     <FlatList
                         data={items}
                         keyExtractor={(item) => item.value.toString()}
