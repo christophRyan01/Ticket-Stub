@@ -1,5 +1,7 @@
 # Ticket-Stub
 
+Expo Link https://expo.io/@chrisg450/TicketStub
+
 Welcome to ticket stubs this is an iOS and Android app where anyone can log on and sell tickets of all sorts.
 Here is the login and registration screen.
 ![](https://github.com/christophRyan01/Ticket-Stub/blob/master/app/assets/HomeScreen.png)
